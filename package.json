@@ -12,6 +12,6 @@
   "type": "commonjs",
   "dependencies": {
     "cypress": "^15.9.0",
-    "cypress-plugin-api": "^2.11.2"
+    "cypress-plugin-api": "^2.12.0"
   }
 }

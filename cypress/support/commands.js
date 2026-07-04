@@ -25,30 +25,49 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
 Cypress.Commands.add('geraToken', (email, senha) => {
-    cy.request({
-        method: 'POST', 
-        url: 'login', 
+    return cy.request({
+        method: 'POST',
+        url: 'login',
         body: {
             email: email,
             password: senha
         }
     }).then((response) => {
-       expect(response.status).to.equal(200) 
-       return response.body.token
+        expect(response.status).to.equal(200)
+        return response.body.token
     })
- })
+})
 
- Cypress.Commands.add('cadastrarUsuario', (nome, email, senha) =>{
-        cy.api({
+Cypress.Commands.add('cadastrarUsuario', (nome, email, senha) => {
+    cy.api({
+        method: 'POST',
+        url: 'users',
+        body: {
+            "name": nome,
+            "email": email,
+            "password": senha
+        }
+    }).then(response => {
+        expect(response.status).to.equal(201)
+        return response.body.user.id
+    })
+})
+
+Cypress.Commands.add('incluirLivro', (titulo, autor, descricao, categoria) => {
+    return cy.geraToken('admin@biblioteca.com', 'admin123').then(token => {
+        return cy.api({
             method: 'POST',
-            url: 'users',
+            url: 'books',
+            headers: { 'Authorization': token },
             body: {
-                "name": nome,
-                "email": email,
-                "password": senha
+                "title": titulo,
+                "author": autor,
+                "description": descricao,
+                "category": categoria
             }
         }).then(response => {
             expect(response.status).to.equal(201)
-            return response.body.user.id
+            return { id: response.body.book.id, token }
         })
- })
+    })
+})

@@ -1,0 +1,39 @@
+{
+  "book": {
+    "id": 1,
+    "title": "Nome livro atualizado",
+    "author": "Autor Atualizado",
+    "isbn": "978-85-359-0277-5",
+    "editor": "Editora Atualizada",
+    "category": "Categoria atualizada",
+    "language": "Português",
+    "publication_year": 2000,
+    "pages": 300,
+    "format": "Físico",
+    "total_copies": 1,
+    "available_copies": 5,
+    "description": "Descrição atualizada do livro",
+    "cover_image": "dom-casmurro.png",
+    "created_at": "2025-08-09 16:31:01",
+    "total_reservations": 2,
+    "active_reservations": 2,
+    "average_rating": null,
+    "total_reviews": 0,
+    "isAvailable": true,
+    "availability_status": "available",
+    "recent_reviews": []
+  },
+  "availability": {
+    "total_copies": 1,
+    "available_copies": 5,
+    "reserved_copies": -4,
+    "isAvailable": true,
+    "status": "available"
+  },
+  "statistics": {
+    "total_reservations": 2,
+    "active_reservations": 2,
+    "average_rating": 0,
+    "total_reviews": 0
+  }
+}
